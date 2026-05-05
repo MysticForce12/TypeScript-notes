@@ -8,25 +8,17 @@
 // Typescript is designed to help developers write better code by providing features that are not available in Javascript. For example, static typing allows developers to catch type-related errors at compile time, which can help prevent bugs and improve code quality. Interfaces and classes can help developers organize their code and create reusable components.
 // To use Typescript, you need to install the Typescript compiler (tsc) and set up a build process to transpile your Typescript code into Javascript. You can also use tools like Webpack or Babel to automate this process and make it easier to work with Typescript in larger projects.
 Object.defineProperty(exports, "__esModule", { value: true });
-// const x: number = 5;
-// console.log(x);
-// let y: number = 5;
-// //y = 'hello';   // this will cause the following type error: Type 'string' is not assignable to type 'number'.
-// console.log(y);
-// function greetUser(name: string){
-//     console.log("Hello " +name);
-// }
-// greetUser("Vikas");
-// let z : any = 23;
-// z = "hello"; // this is allowed because the type of z is any, which means it can hold any type of value.
-// console.log(z);
-// function doSomething(name: any){
-//     console.log("Hello " +name);
-// }
-// doSomething("Vikas");
-function add(a, b) {
-    return a + b;
+function printUserName(user) {
+    console.log("Name: " + user.name);
 }
-console.log(add(5, 10)); // this will output 15
-//console.log(add(5, "10")); // this will cause the following type error: Argument of type 'string' is not assignable to parameter of type 'number'.
+function printUserAge(user) {
+    console.log("Age: " + user.age);
+}
+let person1 = {
+    name: "Vikas",
+    age: 20,
+    email: "vikas@gmail.com"
+};
+printUserName(person1); // this will output "Name: Vikas"
+printUserAge(person1); // this will output "Age: 20"
 //# sourceMappingURL=a.js.map
