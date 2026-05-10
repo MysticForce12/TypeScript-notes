@@ -8,17 +8,16 @@
 // Typescript is designed to help developers write better code by providing features that are not available in Javascript. For example, static typing allows developers to catch type-related errors at compile time, which can help prevent bugs and improve code quality. Interfaces and classes can help developers organize their code and create reusable components.
 // To use Typescript, you need to install the Typescript compiler (tsc) and set up a build process to transpile your Typescript code into Javascript. You can also use tools like Webpack or Babel to automate this process and make it easier to work with Typescript in larger projects.
 Object.defineProperty(exports, "__esModule", { value: true });
-function printUserName(user) {
-    console.log("Name: " + user.name);
+function filterAdultUsers(users) {
+    return users
+        .filter(user => user.age > 18)
+        .map(user => user.name);
 }
-function printUserAge(user) {
-    console.log("Age: " + user.age);
-}
-let person1 = {
-    name: "Vikas",
-    age: 20,
-    email: "vikas@gmail.com"
-};
-printUserName(person1); // this will output "Name: Vikas"
-printUserAge(person1); // this will output "Age: 20"
+const users = [
+    { name: "Vikas", age: 20 },
+    { name: "Alice", age: 17 },
+    { name: "Bob", age: 25 }
+];
+const adultUserNames = filterAdultUsers(users);
+console.log(adultUserNames); // Output: ["Vikas", "Bob"]
 //# sourceMappingURL=a.js.map
