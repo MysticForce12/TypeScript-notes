@@ -358,3 +358,119 @@
 
 // console.log(getFirstElement<number>([1,2,3]));
 // console.log(getFirstElement<string>(["a","b"]));
+
+
+
+
+
+
+
+// // READONLY MODIFIER
+// // You can use the `readonly` keyword to mark properties that cannot be changed after the object is created. This is great for preventing accidental mutations.
+// interface Car {
+//     readonly brand: string;
+//     year: number;
+// }
+
+// let myCar: Car = { brand: "Toyota", year: 2023 };
+// myCar.year = 2024; // Valid
+// // myCar.brand = "Ford"; // Error: Cannot assign to 'brand' because it is a read-only property.
+
+// // You can also use ReadonlyArray to prevent array mutations
+// const numbers: ReadonlyArray<number> = [1, 2, 3];
+// // numbers.push(4); // Error: Property 'push' does not exist on type 'readonly number[]'.
+
+
+
+
+
+
+
+
+// // TYPE ASSERTIONS
+// // Sometimes you have information about the type of a value that TypeScript can't know about. Type assertions allow you to override the compiler's inferred type using the 'as' keyword.
+// // Example: Selecting an element from the DOM
+// const myCanvas = document.getElementById("main_canvas") as HTMLCanvasElement;
+
+// // Now TypeScript knows myCanvas isn't just a generic HTMLElement, but specifically a Canvas, giving you access to canvas-specific methods.
+
+
+
+
+
+
+
+// // LITERAL TYPES
+// // Literal types allow you to specify the exact value a string, number, or boolean must have. They are extremely powerful when combined with Union types.
+// type Status = "success" | "loading" | "error";
+
+// let currentStatus: Status;
+// currentStatus = "loading"; // Valid
+// // currentStatus = "pending"; // Error: Type '"pending"' is not assignable to type 'Status'.
+
+// // TYPE GUARDS (NARROWING)
+// // Type narrowing is the process of moving a less precise type to a more precise type using logic like `typeof` or `instanceof`.
+// function printLength(val: string | number) {
+//     if (typeof val === "string") {
+//         console.log(val.length); // TS knows 'val' is definitively a string here, so .length is valid.
+//     } else {
+//         console.log(val.toFixed(2)); // TS knows 'val' MUST be a number here.
+//     }
+// }
+
+
+
+
+
+
+
+
+
+// // UNKNOWN AND NEVER 
+// // 'unknown' is a safer version of 'any'. It allows you to store any value, but you cannot perform operations on it or assign it to a specifically typed variable until you perform a type check (Type Narrowing).
+// let userInput: unknown;
+// let userName: string;
+
+// userInput = 5;
+// userInput = "Vikas";
+
+// // userName = userInput; // This causes an error! TS won't let you assign 'unknown' to 'string'.
+
+// // We must check the type first:
+// if (typeof userInput === "string") {
+//     userName = userInput; // Now it works, because TS knows it is a string here.
+// }
+
+// // 'never' represents a type of value that never occurs. It's often used for functions that always throw an error or have an infinite loop.
+// function throwError(message: string): never {
+//     throw new Error(message);
+// }
+
+
+
+
+
+
+
+
+
+// // UTILITY TYPES
+// // TypeScript provides several built-in utility types to facilitate common type transformations.
+// interface Todo {
+//     title: string;
+//     description: string;
+//     completed: boolean;
+// }
+
+// // 1. Partial<T>: Makes all properties in T optional.
+// function updateTodo(todoToUpdate: Partial<Todo>) {
+//     // You can pass an object with just { title: "New Title" } instead of the whole object
+// }
+
+// // 2. Pick<T, K>: Constructs a type by picking the set of properties K from T.
+// type TodoPreview = Pick<Todo, "title" | "completed">;
+// // TodoPreview now only has 'title' and 'completed'.
+
+// // 3. Omit<T, K>: Constructs a type by picking all properties from T and then removing K.
+// type TodoWithoutDesc = Omit<Todo, "description">;
+// // TodoWithoutDesc has everything EXCEPT 'description'.
